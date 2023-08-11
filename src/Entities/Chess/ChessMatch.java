@@ -30,9 +30,13 @@ public class ChessMatch {
         return pieces;
     }
 
+    private void placeNewPieces(char column, int row, ChessPiece piece) {
+        board.placePiece(piece, new ChessPosition(column, row).toPosition());
+    }
+
     private void initialSetup() {
-        board.placePiece(new Rook(board, Color.WHITE), new Position(0, 0));
-        board.placePiece(new King(board, Color.WHITE), new Position(0, 4));
+        placeNewPieces('a', 8, new Rook(board, Color.WHITE));
+        placeNewPieces('f', 8, new King(board, Color.WHITE));
     }
 
 }
