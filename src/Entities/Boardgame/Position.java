@@ -1,4 +1,4 @@
-package Entities;
+package Entities.Boardgame;
 
 public class Position {
     private int row;

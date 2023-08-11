@@ -1,4 +1,4 @@
-package Entities;
+package Entities.Boardgame;
 
 public class Board {
     private int rows;
@@ -33,5 +33,10 @@ public class Board {
 
     public Piece piece(Position position) {
         return piece(position.getRow(), position.getCol());
+    }
+
+    public void placePiece(Position position, Piece piece) {
+        pieces[position.getRow()][position.getCol()] = piece;
+        piece.position = position;
     }
 }

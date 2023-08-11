@@ -1,4 +1,4 @@
-package Entities;
+package Entities.Boardgame;
 
 public class Piece {
     protected Position position;

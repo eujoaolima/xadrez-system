@@ -1,5 +1,9 @@
-package Entities;
+package Entities.Chess;
 
+import Entities.Boardgame.Board;
+import Entities.Boardgame.Position;
+import Entities.Pieces.King;
+import Entities.Pieces.Rook;
 import Enums.Color;
 
 public class ChessMatch {
@@ -13,6 +17,7 @@ public class ChessMatch {
 
     public ChessMatch() {
         board = new Board(8, 8);
+        initialSetup();
     }
 
     public ChessPiece[][] getPieces() {
@@ -23,6 +28,11 @@ public class ChessMatch {
             }
         }
         return pieces;
+    }
+
+    private void initialSetup() {
+        board.placePiece(new Position(0, 0), new Rook(board, Color.WHITE));
+        board.placePiece(new Position(0, 4), new King(board, Color.WHITE));
     }
 
 }

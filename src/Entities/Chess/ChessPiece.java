@@ -1,5 +1,7 @@
-package Entities;
+package Entities.Chess;
 
+import Entities.Boardgame.Board;
+import Entities.Boardgame.Piece;
 import Enums.Color;
 
 public class ChessPiece extends Piece {
