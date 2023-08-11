@@ -8,7 +8,7 @@ public class ChessPosition {
 
     public ChessPosition(char col, int row) {
         if(col < 'a' || col > 'h' || row < 1 || row > 8) {
-            throw new IllegalArgumentException("Erro ao criar a posição: Digite valores válids de a1 até h8");
+            throw new IllegalArgumentException("Erro ao criar a posição: Digite valores válidos de a1 até h8");
         }
         this.col = col;
         this.row = row;

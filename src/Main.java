@@ -1,8 +1,10 @@
+import Entities.Chess.ChessException;
 import Entities.Chess.ChessMatch;
 import Entities.Chess.ChessPiece;
 import Entities.Chess.ChessPosition;
 import Entities.UI;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -14,16 +16,24 @@ public class Main {
         ChessMatch chessMatch = new ChessMatch();
 
         while (true) {
-            UI.printBoard(chessMatch.getPieces());
-            System.out.println();
-            System.out.println("Fonte: ");
-            ChessPosition source = UI.readChessPosition(r);
-            System.out.println();
+            try {
+                UI.clearScreen();
+                UI.printBoard(chessMatch.getPieces());
+                System.out.println();
+                System.out.println("Fonte: ");
+                ChessPosition source = UI.readChessPosition(r);
+                System.out.println();
 
-            System.out.println("Destino: ");
-            ChessPosition target = UI.readChessPosition(r);
+                System.out.println("Destino: ");
+                ChessPosition target = UI.readChessPosition(r);
+                ChessPiece piece = chessMatch.performeChessMove(source, target);
+            } catch (ChessException e) {
+                System.out.println(e.getMessage());
+                r.nextLine();
+            }
 
-            ChessPiece piece = chessMatch.performeChessMove(source, target);
+
+
         }
     }
 }
