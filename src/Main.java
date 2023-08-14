@@ -18,8 +18,6 @@ public class Main {
         ChessMatch chessMatch = new ChessMatch();
         List<ChessPiece> captured = new ArrayList<>();
 
-
-
         while (true) {
             try {
                 UI.clearScreen();
