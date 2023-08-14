@@ -1,5 +1,6 @@
 package Entities;
 
+import Entities.Chess.ChessMatch;
 import Entities.Chess.ChessPiece;
 import Entities.Chess.ChessPosition;
 import Enums.Color;
@@ -47,6 +48,14 @@ public class UI {
             throw new InputMismatchException(e.getMessage());
         }
     }
+
+    public static void printMatch(ChessMatch chessMatch) {
+        printBoard(chessMatch.getPieces());
+        System.out.println();
+        System.out.println("Turno: " + chessMatch.getTurn());
+        System.out.println("Esperando o jogador: " + chessMatch.getCurrentColor());
+    }
+
     public static void printBoard(ChessPiece[][] pieces) {
         for (int i = 0; i <pieces.length; i++) {
             System.out.print((8 - i) + " ");

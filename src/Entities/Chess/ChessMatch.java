@@ -18,7 +18,17 @@ public class ChessMatch {
 
     public ChessMatch() {
         board = new Board(8, 8);
+        turn = 1;
+        currentPlayer = Color.WHITE;
         initialSetup();
+    }
+
+    public int getTurn() {
+        return turn;
+    }
+
+    public Color getCurrentColor() {
+        return currentPlayer;
     }
 
     public ChessPiece[][] getPieces() {
@@ -31,12 +41,13 @@ public class ChessMatch {
         return pieces;
     }
 
-    public ChessPiece performeChessMove(ChessPosition sourcePosition, ChessPosition targetPosition) {
+    public ChessPiece performChessMove(ChessPosition sourcePosition, ChessPosition targetPosition) {
         Position source = sourcePosition.toPosition();
         Position target = targetPosition.toPosition();
         validateSourcePosition(source);
         validateTargetPosition(source, target);
         Piece capturedPiece = makeMove(source, target);
+        nextTurn();
         return (ChessPiece) capturedPiece;
     }
 
@@ -51,9 +62,13 @@ public class ChessMatch {
         if (!board.positionExists(position)) {
             throw new ChessException("Não existe peça nesta posição");
         }
+        if(currentPlayer != ((ChessPiece)board.piece(position)).getColor()){
+            throw new ChessException("Esta peça é do adversário!");
+        }
         if(!board.piece(position).isThereAnyPossibleMove()) {
             throw new ChessException("Não existem movimentos possíveis para esta peça!");
         }
+
     }
 
     private void validateTargetPosition(Position source, Position target) {
@@ -86,6 +101,11 @@ public class ChessMatch {
         Position position = sourcePosition.toPosition();
         validateSourcePosition(position);
         return board.piece(position).possibleMoves();
+    }
+
+    private void nextTurn() {
+        turn++;
+        currentPlayer = (currentPlayer == Color.WHITE) ? Color.BLACK : Color.WHITE;
     }
 
 }
