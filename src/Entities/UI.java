@@ -61,7 +61,7 @@ public class UI {
                 System.out.println("Você está em check!!!");
             }
         } else {
-            System.out.println("Check-mate!");
+            System.out.println("Xeque-mate!");
             System.out.println("Vencedor: " + chessMatch.getCurrentColor());
         }
 
