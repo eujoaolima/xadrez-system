@@ -4,6 +4,7 @@ import Entities.Boardgame.Board;
 import Entities.Boardgame.Piece;
 import Entities.Boardgame.Position;
 import Entities.Pieces.King;
+import Entities.Pieces.Pawn;
 import Entities.Pieces.Rook;
 import Enums.Color;
 
@@ -190,12 +191,31 @@ public class ChessMatch {
     }
 
     private void initialSetup() {
-        placeNewPieces('h', 7, new Rook(board, Color.WHITE));
-        placeNewPieces('d', 1, new Rook(board, Color.WHITE));
+        placeNewPieces('a', 2, new Pawn(board, Color.WHITE));
+        placeNewPieces('b', 2, new Pawn(board, Color.WHITE));
+        placeNewPieces('c', 2, new Pawn(board, Color.WHITE));
+        placeNewPieces('d', 2, new Pawn(board, Color.WHITE));
+        placeNewPieces('e', 2, new Pawn(board, Color.WHITE));
+        placeNewPieces('f', 2, new Pawn(board, Color.WHITE));
+        placeNewPieces('g', 2, new Pawn(board, Color.WHITE));
+        placeNewPieces('h', 2, new Pawn(board, Color.WHITE));
+
+        placeNewPieces('a', 1, new Rook(board, Color.WHITE));
+        placeNewPieces('h', 1, new Rook(board, Color.WHITE));
         placeNewPieces('e', 1, new King(board, Color.WHITE));
 
-        placeNewPieces('b', 8, new Rook(board, Color.BLACK));
-        placeNewPieces('a', 8, new King(board, Color.BLACK));
+        placeNewPieces('a', 8, new Rook(board, Color.BLACK));
+        placeNewPieces('h', 8, new Rook(board, Color.BLACK));
+        placeNewPieces('d', 8, new King(board, Color.BLACK));
+
+        placeNewPieces('a', 7, new Pawn(board, Color.BLACK));
+        placeNewPieces('b', 7, new Pawn(board, Color.BLACK));
+        placeNewPieces('c', 7, new Pawn(board, Color.BLACK));
+        placeNewPieces('d', 7, new Pawn(board, Color.BLACK));
+        placeNewPieces('e', 7, new Pawn(board, Color.BLACK));
+        placeNewPieces('f', 7, new Pawn(board, Color.BLACK));
+        placeNewPieces('g', 7, new Pawn(board, Color.BLACK));
+        placeNewPieces('h', 7, new Pawn(board, Color.BLACK));
     }
 
     private void nextTurn() {

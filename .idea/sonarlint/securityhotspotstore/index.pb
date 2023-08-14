@@ -7,5 +7,3 @@ Q
 !src/Entities/Boardgame/Board.java,2\0\208278ff9559873f7f0ca8208436547abbb141a4
 V
 &src/Entities/Chess/ChessException.java,d\d\dd2d141c7b3ebade92c2b58f19ddc4f254cf79aa
-Q
-!src/Entities/Boardgame/Piece.java,3\d\3d0b970e54e0db705f8b4ba928f7ec3180917c27
