@@ -54,11 +54,17 @@ public class UI {
         System.out.println();
         printCapturedPieces(captured);
         System.out.println("Turno: " + chessMatch.getTurn());
-        System.out.println("Esperando o jogador: " + chessMatch.getCurrentColor());
 
-        if (chessMatch.getCheck()) {
-            System.out.println("Você está em check!!!");
+        if (!chessMatch.getCheckMate()) {
+            System.out.println("Esperando o jogador: " + chessMatch.getCurrentColor());
+            if (chessMatch.getCheck()) {
+                System.out.println("Você está em check!!!");
+            }
+        } else {
+            System.out.println("Check-mate!");
+            System.out.println("Vencedor: " + chessMatch.getCurrentColor());
         }
+
     }
 
     public static void printBoard(ChessPiece[][] pieces) {
