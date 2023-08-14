@@ -3,10 +3,7 @@ package Entities.Chess;
 import Entities.Boardgame.Board;
 import Entities.Boardgame.Piece;
 import Entities.Boardgame.Position;
-import Entities.Pieces.Bishop;
-import Entities.Pieces.King;
-import Entities.Pieces.Pawn;
-import Entities.Pieces.Rook;
+import Entities.Pieces.*;
 import Enums.Color;
 
 import java.util.ArrayList;
@@ -201,6 +198,8 @@ public class ChessMatch {
         placeNewPieces('g', 2, new Pawn(board, Color.WHITE));
         placeNewPieces('h', 2, new Pawn(board, Color.WHITE));
 
+        placeNewPieces('b', 1, new Knight(board, Color.WHITE));
+        placeNewPieces('g', 1, new Knight(board, Color.WHITE));
         placeNewPieces('c', 1, new Bishop(board, Color.WHITE));
         placeNewPieces('f', 1, new Bishop(board, Color.WHITE));
         placeNewPieces('a', 1, new Rook(board, Color.WHITE));
@@ -209,6 +208,8 @@ public class ChessMatch {
 
         placeNewPieces('c', 8, new Bishop(board, Color.BLACK));
         placeNewPieces('f', 8, new Bishop(board, Color.BLACK));
+        placeNewPieces('b', 8, new Knight(board, Color.BLACK));
+        placeNewPieces('g', 8, new Knight(board, Color.BLACK));
         placeNewPieces('a', 8, new Rook(board, Color.BLACK));
         placeNewPieces('h', 8, new Rook(board, Color.BLACK));
         placeNewPieces('d', 8, new King(board, Color.BLACK));

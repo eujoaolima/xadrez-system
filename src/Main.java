@@ -5,14 +5,11 @@ import Entities.Chess.ChessPosition;
 import Entities.UI;
 
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-//        Position pos = new Position(3, 5);
-//        System.out.println(pos);
 
         Scanner r = new Scanner(System.in);
         ChessMatch chessMatch = new ChessMatch();
