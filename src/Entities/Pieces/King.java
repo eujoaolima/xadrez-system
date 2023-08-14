@@ -2,6 +2,7 @@ package Entities.Pieces;
 
 import Entities.Boardgame.Board;
 import Entities.Boardgame.Position;
+import Entities.Chess.ChessMatch;
 import Entities.Chess.ChessPiece;
 import Enums.Color;
 
