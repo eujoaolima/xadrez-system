@@ -7,6 +7,7 @@ import Entities.Pieces.*;
 import Entities.piece.Queen;
 import Enums.Color;
 
+import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -32,6 +33,10 @@ public class ChessMatch {
 
     public ChessPiece getEnPassantVulnerable() {
         return enPassantVulnerable;
+    }
+
+    public ChessPiece getPromoted() {
+        return promoted;
     }
 
     public int getTurn() {
@@ -75,6 +80,21 @@ public class ChessMatch {
 
         ChessPiece movedPiece = (ChessPiece) board.piece(target);
 
+        // Promoção
+        promoted = null;
+        if (movedPiece instanceof Pawn) {
+            if ((movedPiece.getColor() == Color.WHITE && target.getRow() == 0)) {
+                promoted = (ChessPiece)board.piece(target);
+                promoted = replacePromotedPiece("Q");
+            }
+
+            if ((movedPiece.getColor() == Color.BLACK && target.getRow() == 7)) {
+
+            }
+
+        }
+
+
         if (testCheck(currentPlayer)) {
             undoMove(source, target, capturedPiece);
             throw new ChessException("Você não pode se colocar em check!");
@@ -97,6 +117,38 @@ public class ChessMatch {
         }
 
         return (ChessPiece) capturedPiece;
+    }
+
+    public ChessPiece replacePromotedPiece(String type) {
+        if (promoted == null) {
+            throw new IllegalArgumentException("Não é possível promover a peça");
+        }
+        if (!type.equals("B") && !type.equals("C") && !type.equals("T") && !type.equals("Q")) {
+            throw new InvalidParameterException("Não é possível promover a peça");
+        }
+
+        Position position = promoted.getChessPosition().toPosition();
+        Piece p = board.removePiece(position);
+        piecesOnTheBoard.remove(p);
+
+        ChessPiece newPiece = newPiece(type, promoted.getColor());
+        board.placePiece(newPiece, position);
+        piecesOnTheBoard.add(newPiece);
+
+        return newPiece;
+    }
+
+    private ChessPiece newPiece(String type, Color color) {
+        if(type.equals("B")) {
+            return new Bishop(board, color);
+        }
+        if(type.equals("C")) {
+            return new Knight(board, color);
+        }
+        if(type.equals("T")) {
+            return new Rook(board, color);
+        }
+        return new Queen(board, color);
     }
 
     private Piece makeMove(Position source, Position target) {

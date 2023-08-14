@@ -36,12 +36,17 @@ public class Main {
                     captured.add(piece);
                 }
 
+                if(chessMatch.getPromoted() != null) {
+                    System.out.println("Digite qual peça você deseja (T/C/B/Q): ");
+                    String type = r.nextLine();
+                    chessMatch.replacePromotedPiece(type);
+                }
+
             } catch (ChessException e) {
                 System.out.println(e.getMessage());
                 r.nextLine();
             }
         }
-
         UI.clearScreen();
         UI.printMatch(chessMatch, captured);
     }
